@@ -1,0 +1,48 @@
+version: 2
+jobs:
+  build:
+    docker:
+      - image: circleci/python:3.6.6 
+      
+      # documented at https://circleci.com/docs/2.0/circleci-images/
+
+    working_directory: ~/JUNO
+    steps:
+      - checkout
+      
+      - restore_cache:
+          keys:
+          - v1-dependencies-{{ checksum "requirements.txt" }}
+          # fallback to using the latest cache if no exact match is found
+          - v1-dependencies-
+
+      - run:
+          name: install dependencies
+          command: |
+            python3 -m venv venv
+            . venv/bin/activate
+            pip install --upgrade pip
+            pip install -r requirements.txt
+      - save_cache:
+          paths:
+            - ./venv
+          key: v1-dependencies-{{ checksum "requirements.txt" }}
+        
+        
+    
+      # https://pytest.org
+      # https://nose.readthedocs.io
+      #mkdir -p reports
+      #jupyter nbconvert --execute task_0.ipynb
+      #mv task_0.html reports/task.html
+      
+      - run:
+          name: downloading and commiting kernel
+          command: |
+            . venv/bin/activate
+            mkdir -p reports
+            jupyter-nbconvert --execute EDA.ipynb
+            mv EDA.html reports/EDA.html
+      - store_artifacts:
+          path: reports
+          destination: reports
