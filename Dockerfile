@@ -1,6 +1,6 @@
 FROM python:3.7-slim
 
-RUN pip install --no-cache --upgrade pip && pip install --no-cache notebook
+#RUN pip install --no-cache --upgrade pip && pip install --no-cache notebook
 
 
 ARG NB_USER
@@ -21,7 +21,11 @@ RUN chown -R ${NB_UID} ${HOME}
 RUN apt-get update && apt-get install -y \
         zip \
         unzip 
-
-RUN pip install -r ~/requirements.txt
+        
+COPY requirements.txt ./
+RUN sudo pip install --no-cache --upgrade pip && pip install --no-cache notebook
+#RUN sudo python3 -m venv myenv && . myenv/bin/activate
+RUN sudo pip install --trusted-host pypi.python.org -r requirements.txt
+#RUN pip install -r ~/requirements.txt
 
 USER ${NB_USER}
