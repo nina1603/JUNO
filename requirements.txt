@@ -8,6 +8,6 @@ kaggle
 numpy
 pandas
 seaborn
-hdf5==1.8.12
+hdf5
 tables
 wget
