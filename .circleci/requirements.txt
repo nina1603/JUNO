@@ -1,0 +1,11 @@
+tqdm
+jupyter
+ipython
+scikit-learn
+scipy
+matplotlib
+kaggle
+numpy
+pandas
+seaborn
+wget
