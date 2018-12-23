@@ -29,7 +29,7 @@ RUN apt-get update && apt-get install -y \
   
 #RUN sudo pip install --no-cache --upgrade pip && sudo pip3 install jupyter notebook --no-cache-dir
 #RUN sudo python3 -m venv myenv && . myenv/bin/activate
-RUN sudo pip install --trusted-host pypi.python.org -r requirements.txt
+RUN pip install --trusted-host pypi.python.org -r requirements.txt
 #RUN pip install -r ~/requirements.txt
 
 USER ${NB_USER}
