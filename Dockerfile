@@ -22,10 +22,10 @@ RUN apt-get update && apt-get install -y \
         zip \
         unzip 
 
-RUN apt-get update \
-    && apt-get install -y build-essential \
-    git wget libzmq3-dev ca-certificates python3-pip \
-    && rm -rf /var/lib/apt/lists/* && pip3 install jupyter notebook --no-cache-dir \
+#RUN apt-get update \
+#    && apt-get install -y build-essential \
+#    git wget libzmq3-dev ca-certificates python3-pip \
+#    && rm -rf /var/lib/apt/lists/* && pip3 install jupyter notebook --no-cache-dir \
   
 #RUN sudo pip install --no-cache --upgrade pip && sudo pip3 install jupyter notebook --no-cache-dir
 #RUN sudo python3 -m venv myenv && . myenv/bin/activate
