@@ -1,6 +1,6 @@
 FROM python:3.7-slim
 
-RUN sudo pip install --no-cache --upgrade pip
+RUN pip install --no-cache --upgrade pip
 
 
 ARG NB_USER
