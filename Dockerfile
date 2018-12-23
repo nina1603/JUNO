@@ -1,6 +1,6 @@
 FROM python:3.7-slim
 
-RUN pip install --no-cache --upgrade pip
+RUN pip install --no-cache --upgrade pip && pip install --no-cache jupyter notebook
 
 
 ARG NB_USER
